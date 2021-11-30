@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+  <head>
+    <!-- Custom styles for this template -->
+    <link href="sidebars.css" rel="stylesheet">
+  </head>
+
+{% block content %}
+
+<!-- 
+# La route de la homepage
+@app.route("/", methods=["GET", "POST"])
+
+# La route de la homepage avec la categorie name en argument
+@app.route("/<category>", methods=["GET", "POST"])
+ -->
+
+    <!-- catégories -->
+
+    <!-- all_categories = categories = 
+                          categorie[0] = name -->
+
+    <!-- <div class="two_columns flex"> -->
+    {% if all_categories %}
+        <div class="sidebar_main">
+            <aside>
+                <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-light flex center-block" style="width: 200px; height: auto;">
+
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <li class="nav-item">
+                        <div aria-current="page"></div>
+                        <a href="/"><h3>Catégories</h3></a>
+                    {% for category in all_categories %}
+                        <li class="nav-item">
+                        {% if category[0] == chosen_category %}
+                            <a href="/{{ category[0] }}" class="nav-link active"aria-current="page">
+                                <svg class="bi me-2" width="16" height="16">
+                                    <use xlink:href="/"/>
+                                </svg>
+                                {{ category[0] }}
+                            </a>
+                        {% else %}
+                            <a href="/{{ category[0] }}" class="nav-link link-dark">
+                                <svg class="bi me-2" width="16" height="16">
+                                    <use xlink:href="/"/>
+                                </svg>
+                                {{ category[0] }}
+                            </a>
+                        {% endif %}                
+                        </li>  
+                    {% endfor %}
+                    <hr>
+                </div>
+            </aside>
+        </div>
+    {% endif %}
+
+    <!-- main home -->
+
+    <main>
+        
+        <!-- pitch home -->
+
+        <div class="espace">
+            <h3 id="margin-text-bienvenue">Projet PICSHARE</h3>
+            <p>Bienvenue sur notre site d'upload et de partage d'images SaLeeMas! Ce site a été réalisé lors d'un projet de groupe, au cours de notre formation TECH FRONT auprès de l'association Matrice en Juin 2021.</p>
+        </div>
+
+        <!-- images -->
+
+        <!-- all_pictures = pictures = 
+                            picture[0] = id, 
+                            picture[1] = title, 
+                            picture[2] = filename, -->
+
+        {% if all_pictures %}
+        	{% for picture in all_pictures %}
+                <a class="nav-link" href="picture/{{ picture[0] }}">
+                    <img class="arrondie" src="/{{ config['UPLOAD_FOLDER'] }}/{{ picture[2] }}" 
+                    alt="{{ picture[1] }}"
+                    width=300 height=300>
+                </a>
+            {% endfor %}
+        {% endif %}
+
+    </main>
+    
+{% endblock %}
+

@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{% block content %}
+
+  <!-- #  La route de la page picture
+      @app.route("/picture/<picture_id>", methods=["GET", "POST"])
+   -->
+
+
+    <!-- images -->
+
+  <!-- all_pictures = pictures = 
+                      picture[0] = title, 
+                      picture[1] = filename, 
+                      picture[2] = upload_date, 
+                      picture[3] = description, 
+                      picture[4] = categories.name -->
+
+  {% if all_pictures %}
+      {% for picture in all_pictures %}
+        <section>  
+          <!--image-->
+          <div  class="input-group flex-picture box2">
+            <img class="arrondie" src="/{{ config['UPLOAD_FOLDER'] }}/{{ picture[1] }}" alt="" width=500 height=500>  
+          </div>
+
+          <!--catégorie + upload_date-->
+          <div class="box3">
+            <!--Titre-->
+            <div  class="input-group">
+              <h3>{{ picture[0] }}</h3>
+            </div>
+            <h5>Catégorie : {{ picture[4] }}</h5>
+            <h5>Date : {{ picture[2] }}</h5>
+
+            <!--description-->  
+            <div  class="box4">
+              {{ picture[3] }}   
+                <!--saisie de commentaire-->
+                <form method=post enctype=multipart/form-data > 
+                  <div class="input-group">
+                    <textarea class="form-control" placeholder="Votre commentaire..." aria-label="Votre commentaire..." name="comment"></textarea>
+                  </div><br>
+                  
+                  <!--bouton commenter-->
+                  <div class="input-group mb-3">
+                    <button class="btn btn-primary" type=submit action="">Commenter</button>
+                  </div>
+ 
+                </form>
+            </div>  
+          </div>
+        </section> 
+
+        <!-- commentaires -->
+
+        <!-- all_comments = comments = 
+                            comment[0] = comment,
+                            comment[1] = comment_date -->
+
+          {% if all_comments %}
+            {% for comment in all_comments %}
+            
+              <!--commentaire + date du commentaire-->
+              <div>
+                <p readonly class="form-control" aria-label="Votre commentaire..." name="comment">{{ comment[0] }}     {{ comment[1] }}</p>
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+      {% endfor %}
+  {% endif %}
+  
+{% endblock %} 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/layout.css">
+        <title>Picshare</title>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <img class="logo" src="../static/images/saleemas_logo.png" alt="Logo">
+                    <a class="navbar-brand" href="#">SaLeeMas</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                            <a class="nav-link" href="/upload">Upload</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="sidebar_main">
+        <!-- pour evter un blanc entre la sidebar et la nav -->
+        {% block content %}
+          <main>   
+          </main>    
+        {% endblock %}
+        </div>
+        <div class="espace">
+        </div>
+        <footer>
+            <section>
+                <div class="texte">
+                    <p class="one"> &copy SaLeeMas, 2021. </p>
+                    <hr>
+                    <p class="two"> Proudly powered by Sabrina, Thomas and Kathleen &#127807; </p>
+                </div>
+            </section>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+    <!--bouton, choix image -->
+    <form method=post enctype=multipart/form-data class="upload_marges">
+   
+    <div class="input-group mb-3">
+      <input class="form-control" type=file name="file" required>
+      
+    </div>
+    
+    
+    <!--champs titre-->
+    <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1" type=text>Titre</span>
+    <input type="text" class="form-control" placeholder="Donner un titre à votre image" name="title" aria-label="Donnez un titre à votre image" aria-describedby="basic-addon1" required>
+    </div>
+    
+    <!--champs catégorie deuxième essai (celui qui marche)-->
+    <libelle class="input-group mb-3">Sélectionner la catégorie de votre image: </libelle>
+
+    <div class="input-group mb-3">    
+    
+    
+        <select name="category" id="pet-select"  class="input-group-text" value="Catégories" required>
+            <option class="dropdown-item" required></option>
+            {% for cat in list_of_categories %}
+                
+                <option class="dropdown-item" value={{ cat }}>{{ cat }}</option>
+            
+            {% endfor %}
+        </select>
+    
+    </div>
+    
+    <!--champs description-->
+    <div class="input-group">
+    <span class="input-group-text">Description</span>
+    <textarea class="form-control" placeholder="Entrer une description à votre image" aria-label="Entrer une description à votre image" name="description"></textarea>
+    </div><br>
+    <!--bouton enregistrer-->
+    <div class="input-group mb-3">
+    <button class="btn btn-primary" type=submit activate>Enregistrer</button>
+    <!--<input class="input-group-text" type=submit value=Upload>-->
+    </div>
+    
+    </form>
+{% endblock %} 
+</body>
+</html>
+
+
+
